@@ -1,8 +1,39 @@
+" Plugins
+call plug#begin('~/.config/nvim/vimplug/')
+
+Plug 'Omnisharp/omnisharp-vim'
+Plug 'dense-analysis/ale'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'junegunn/fzf'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+Plug 'tpope/vim-fugitive' 
+
+call plug#end()
+
 syntax enable
 filetype indent plugin on
 
+let g:UltiSnipsExpandTrigger = pumvisible() ? "<Enter>" : "<S-Enter>"
+call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+        \ 'name': 'ultisnips',
+        \ 'whitelist': ['*'],
+        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+        \ }))
+
+
+let g:UltiSnipsJumpForwardTrigger='<Tab>'
+let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
+
+" Asyncomplete keybindings
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
 " Disable the default Vim startup message.
 set shortmess+=I
+
+set diffopt+=vertical
 
 " Show line numbers.
 set number
@@ -25,7 +56,7 @@ set hidden
 " Use X clipboard
 set clipboard=unnamedplus
 
-" Replace tab with spaces
+" Replace tabs with spaces
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -47,34 +78,22 @@ nmap Q <Nop>
 " Disable audible bell 
 set noerrorbells visualbell t_vb=
 
-" Try to prevent bad habits (Arrow keys)
-" in normal mode
+" Use the newer stdio over http
+let g:OmniSharp_server_stdio = 1
+" Use system mono to run roslyn
+let g:OmniSharp_server_use_mono = 1
+
+" Override ale to only use OmniSharp linter
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+au User asyncomplete_setup call asyncomplete#register_source({
+    \ 'name': 'csharp',
+    \ 'allowlist': ['cs','csharp'],
+    \ 'completor': function('asyncomplete#sources#OmniSharp#completor'),
+    \ })
+
+" Try to prevent bad habits (Arrow keys) in normal mode
 nnoremap <Left>  :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up>    :echoe "Use k"<CR>
 nnoremap <Down>  :echoe "Use j"<CR>
-
-" ...and in insert mode
-inoremap <Left>  <ESC>:echoe "Use h"<CR>
-inoremap <Right> <ESC>:echoe "Use l"<CR>
-inoremap <Up>    <ESC>:echoe "Use k"<CR>
-inoremap <Down>  <ESC>:echoe "Use j"<CR>
-
-" Plugins
-call plug#begin('~/.config/nvim/vimplug/')
-
-" Language client
-" Plug 'prabirshrestha/asyncomplete.vim'
-" 
-" " Linter
-" Plug 'w0rp/ale'
-" 
-" Plug 'tpope/vim-dispatch' | Plug 'Shougo/vimproc.vim'
-" 
-" " Snippet
-" 
-" " C#
-" Plug 'OmniSharp/omnisharp-vim' | Plug 'nickspoons/vim-sharpenup' | Plug 'prabirshrestha/vim-lsp' | Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-call plug#end()
-
