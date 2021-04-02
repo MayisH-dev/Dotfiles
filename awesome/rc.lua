@@ -37,8 +37,9 @@ awful.spawn.with_shell(
        'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
        )
 
--- Launch gnome-polkit 
-awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &")
+-- Launch gnome-polkit
+awful.spawn.with_shell("gnome-keyring-daemon -d")
+awful.spawn.with_shell("udiskie -t &")
 -- Handle runtime errors after startup
 do
     local in_error = false
@@ -59,7 +60,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/mayis/.config/awesome/theme.lua")
 
-beautiful.notification_font = "Noto Sans 12"   
+beautiful.notification_font = "Noto Sans 12"
 -- beautiful.notification_shape = gears.infobubble(cr,70,70)
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -75,14 +76,14 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    -- awful.layout.suit.floating,
     awful.layout.suit.tile,
-    -- awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
-    -- awful.layout.suit.tile.top,
     awful.layout.suit.fair,
-    -- awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
+    -- awful.layout.suit.floating,
+    -- awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.top,
+    -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
@@ -186,8 +187,8 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    local names = {"1 term","2 brws","3 socl","4 dvlp","5 read","6 offc","7 edtr","8","9"}
-    awful.tag(names,s,awful.layout.layouts[1]) 
+    local names = {"1\239\128\138","2\238\188\190","3\238\180\140","4\238\183\166","5\238\171\145","6\238\172\175","7\238\177\149","8\238\187\191","9\238\188\135"}
+    awful.tag(names,s,awful.layout.layouts[1])
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
@@ -213,7 +214,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 14 })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -265,11 +266,10 @@ globalkeys = gears.table.join(
         end,
         {description = "focus next by index", group = "client"}
     ),
-    awful.key({ "Shift" }, "Alt_L", 
-	function () 
-	    mykeyboardlayout.next_layout();
-	end,
-	{description = "change keyboard layout", group = "custom"}
+    awful.key({ "Mod1" }, "Shift_L" ,
+        function ()
+            mykeyboardlayout.next_layout();
+        end, {description = "change keyboard layout", group = "custom"}
     ),
     awful.key({ modkey,           }, "k",
         function ()

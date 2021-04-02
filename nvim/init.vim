@@ -1,99 +1,235 @@
-" Plugins
-call plug#begin('~/.config/nvim/vimplug/')
+" Section: General
+" Command line history
+set history=500
 
-Plug 'Omnisharp/omnisharp-vim'
-Plug 'dense-analysis/ale'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'junegunn/fzf'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-Plug 'tpope/vim-fugitive' 
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
 
-call plug#end()
+" Check for external changes
+set ar
+au FocusGained,BufEnter * checktime
 
+" Fast key combinations
+let mapleader = ","
+
+" Save with leader+w
+nmap <leader>w :w<cr>
+
+" Section: UI
+
+" Scrollover when moving vertically
+set so=5
+
+" Turn on the wild menu (enhanced command line completion)
+set wmnu
+
+" Ignore files in wildmode completions
+set wig+=*/.git/*,*/bin/*,*/obj/*
+
+" Show current row/col position
+set ru
+
+" Height of command bar
+set ch=1
+
+" Wrap at the end/start of line when navigating horizontally
+set ww+=h,l
+
+" Ignore case when searching
+set ic
+
+" Don't ignore case when search contains uppercase
+set sc
+
+" Anywhere in search use \/c to force ignore case and \/C to force
+" case-sensitive search
+
+" Do not update ui while executing macros
+set lz
+
+" Default to regex when searching
+set magic
+
+" Display matching brackets
+set sm
+set mat=2
+
+" Left margin
+set fdc=1
+
+" Section: Colors and fonts
+
+" Syntax highlighting
 syntax enable
-filetype indent plugin on
 
-let g:UltiSnipsExpandTrigger = pumvisible() ? "<Enter>" : "<S-Enter>"
-call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-        \ 'name': 'ultisnips',
-        \ 'whitelist': ['*'],
-        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-        \ }))
+" Section: Files, backups and undo
 
+" Turn off backups, git tracks already
+set nowb
+set noswf
 
-let g:UltiSnipsJumpForwardTrigger='<Tab>'
-let g:UltiSnipsJumpBackwardTrigger='<S-tab>'
+" Section: Text, tab and indents
 
-" Asyncomplete keybindings
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+" Use space instead of tabs
+set et
 
-" Disable the default Vim startup message.
-set shortmess+=I
+" Only at the beginning of line
+set sta
 
-set diffopt+=vertical
-
-" Show line numbers.
-set number
-
-" Show relative line numbers
-set relativenumber
-
-" Always show the status line at the bottom 
-set laststatus=2
-
-" Always show lines when on scrolling onto the bottom line
-set scrolloff=3
-
-" Backspace over anything (chars before insert point)
-set backspace=indent,eol,start
-
-" Hide unsaved buffers
-set hidden
-
-" Use X clipboard
-set clipboard=unnamedplus
-
-" Replace tabs with spaces
-set tabstop=4
+" Tab = 4 spaces
 set shiftwidth=4
-set expandtab
+set ts=4
 
-" Search case insensitive
-set ignorecase
+" Line break (defaul textwidth=78, no breaks on longer lines)
+set lbr
+set tw=150
 
-" Highlight search matches
-set smartcase
+set si   " Smart indent (on new lines)
+set wrap " Wrap long lines (only changes display)
 
-" Search during typing 
-set incsearch
+" Number of cols to scroll horizontally
+set ss=5
+" Add line start/end display chars
+set listchars+=precedes:<,extends:>
 
-" Key Bindings
+" Section: Visual mode
 
-" Unbind Ex mode
-nmap Q <Nop> 
+" In visual mode press * or # to search only selection
+vnoremap <silent> * :<C-u>call VisualSelection('','')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('','')<CR>/<C-R>=@/<CR><CR>
 
-" Disable audible bell 
-set noerrorbells visualbell t_vb=
+" Section: Moving around tabs, windows and buffers
 
-" Use the newer stdio over http
-let g:OmniSharp_server_stdio = 1
-" Use system mono to run roslyn
-let g:OmniSharp_server_use_mono = 1
+" Space to forward search, Ctrl+Space backwards search
+map <space> /
+map <C-space> ?
 
-" Override ale to only use OmniSharp linter
-let g:ale_linters = { 'cs': ['OmniSharp'] }
+" Leader+Enter to disable highlight
+map <silent> <leader><cr> :noh<cr>
 
-au User asyncomplete_setup call asyncomplete#register_source({
-    \ 'name': 'csharp',
-    \ 'allowlist': ['cs','csharp'],
-    \ 'completor': function('asyncomplete#sources#OmniSharp#completor'),
-    \ })
+" Ctrl+[hjkl] to switch windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-j> <C-W>h
+map <C-l> <C-W>l
 
-" Try to prevent bad habits (Arrow keys) in normal mode
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
+" Leader+bd to close current buffer
+map <leader>bd :Bclose<cr>:tabc<cr>gT
+
+" Leader+ba to close all buffers
+map <leader>ba :bufdo bd<cr>
+
+" Leader+[hl] to navigate buffers
+map <leader>l :bn<cr>
+map <leader>h :bp<cr>
+
+" Leader+tn to create new empty tab
+map <leader>tn :tabe<cr>
+" Leader+to to close all other tabs
+map <leader>to :tabo<cr>
+" Leader+tc to close tab
+map <leader>tc :tabc<cr>
+" Leader+tm to move tab
+map <leader>tm :tabm
+" Leaber+t+Leader to navigate tab
+map <leader>t<leader> :tabnext
+
+" Leader+tl to toggle between last accessed tab
+let g:lasttab = 1
+nmap <leader>tl :exe"tabn ".g:lasttab<cr>
+au TabLeave * let g:lasttab = tabpagenr()
+
+" Leader+te open new tab with current buffer's path
+map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
+
+" Leader+cd switch working directory to the directory of current buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Switch to existing tab if same buffer is open, open in new tab otherwise
+set swb=useopen,usetab,newtab
+
+" Return to last edit position when opening files
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Section: Status line
+set statusline=\ %F%m%r%h\ %w\ \ WorkDir:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+
+" Section: Editng mappings
+
+" 0 to first non-blank character
+map 0 ^
+
+" Alt+[jk] to move lines in normal and visual modes
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+" Before buffer write, trim white spaces for certain filetypes
+au BufWritePre *.cs,*.sql,*.fish,*.sh,*.vim,*.txt,*.lua,*.py :%s/\s\+$//e
+
+" Section: Spell checking
+
+" <leader>ss to toggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" <leader>sn to navigate to next misspelled word
+" map <leader>sn ]s
+" <leader>sp to navigate to previous misspelled word
+" map <leader>sp [s
+" <leader>sa to add word to dictionary
+" map <leader>sa zg
+" <leader>s? to suggest alternative for misspelled word
+" map <leader>s? z=
+
+" Section: Misc
+
+" <leader>q to open a scribble buffer
+map <leader>q :e ~/buffer<cr>
+
+" ========================= "
+" Section: Helper functions "
+" =========================="
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+    let l:currentBufNum = bufnr("%")
+    let l:alternateBufNum = bufnr("#")
+
+    if buflisted(l:alternateBufNum)
+        buffer #
+    else
+        bnext
+    endif
+
+    if bufnr("%") == l:currentBufNum
+        new
+    endif
+
+    if buflisted(l:currentBufNum)
+        execute("bdelete! ".l:currentBufNum)
+    endif
+endfunction
+
+function! CmdLine(str)
+    call feedkeys(":" . a:str)
+endfunction
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction

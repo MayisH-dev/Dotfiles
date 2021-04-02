@@ -2,14 +2,22 @@
 # VERSION: 3.0
 SETUVAR --export DOTNET_CLI_TELEMETRY_OPTOUT:true
 SETUVAR --export EDITOR:/bin/vim
-SETUVAR --export PATH:/home/mayis/\x2eghcup/bin\x1e/home/mayis/\x2elocal/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/sbin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/home/mayis/\x2edotnet/tools\x1e/home/mayis/\x2edotnet/tools\x1e/home/mayis/\x2edotnet/tools
+SETUVAR --export PATH:/home/mayis/\x2edotnet/tools\x1e/home/mayis/\x2eghcup/bin\x1e/home/mayis/\x2elocal/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/sbin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/usr/bin
+SETUVAR XDG_CONFIG_HOME:/home/mayis/\x2econfig
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_cat:bat
 SETUVAR _fish_abbr_cdg:cd\x20\x28git\x20rev\x2dparse\x20\x2d\x2dshow\x2dtoplevel\x29
-SETUVAR _fish_abbr_def:dotnet\x2def
+SETUVAR _fish_abbr_def:dotnet\x20ef
+SETUVAR _fish_abbr_defdd:dotnet\x20ef\x20database\x20drop
+SETUVAR _fish_abbr_defdu:dotnet\x20ef\x20database\x20update
+SETUVAR _fish_abbr_defma:dotnet\x20ef\x20migrations\x20add
+SETUVAR _fish_abbr_defml:dotnet\x20ef\x20migrations\x20list
+SETUVAR _fish_abbr_defmr:dotnet\x20ef\x20migrations\x20remove
+SETUVAR _fish_abbr_defms:dotnet\x20ef\x20migrations\x20script
+SETUVAR _fish_abbr_fsi:dotnet\x20fsi
 SETUVAR _fish_abbr_ga:git\x20add\x20\x2e
 SETUVAR _fish_abbr_gaa:git\x20add\x20/home/mayis/Projects/finance\x2dapplications
 SETUVAR _fish_abbr_gc:git\x20commit
@@ -17,6 +25,7 @@ SETUVAR _fish_abbr_gl:git\x20log
 SETUVAR _fish_abbr_gs:git\x20status
 SETUVAR _fish_abbr_ls:exa
 SETUVAR _fish_abbr_nint:nmcli\x20connection\x20up\x20Internet
+SETUVAR _fish_abbr_nloc:nmcli\x20connection\x20up\x20Localnet
 SETUVAR _fish_abbr_rb:reboot
 SETUVAR _fish_abbr_remv:sudo\x20pacman\x20\x2dRns
 SETUVAR _fish_abbr_s:sudo
@@ -26,7 +35,7 @@ SETUVAR _fish_abbr_sync:sudo\x20pacman\x20\x2dS
 SETUVAR _fish_abbr_vim:nvim
 SETUVAR _fish_abbr_yall:yay\x20\x2dSyu
 SETUVAR _fish_abbr_yrch:yay\x20\x2dSs
-SETUVAR _fish_abbr_yync:yay\x20\x2dSyu
+SETUVAR _fish_abbr_yync:yay\x20\x2dS
 SETUVAR _fish_abbr_zz:systemctl\x20suspend
 SETUVAR fish_color_autosuggestion:44475A
 SETUVAR fish_color_cancel:\x2dr
