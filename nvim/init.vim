@@ -1,4 +1,7 @@
 " Section: General
+" Use system clipboard
+set clipboard+=unnamedplus
+
 " Command line history
 set history=500
 
@@ -17,6 +20,10 @@ let mapleader = ","
 nmap <leader>w :w<cr>
 
 " Section: UI
+
+" Display absolute line numbers on current line and relative line numbers on other lines
+set nu
+set rnu
 
 " Scrollover when moving vertically
 set so=5
@@ -56,7 +63,7 @@ set sm
 set mat=2
 
 " Left margin
-set fdc=1
+" set fdc=1
 
 " Section: Colors and fonts
 
@@ -91,13 +98,13 @@ set wrap " Wrap long lines (only changes display)
 " Number of cols to scroll horizontally
 set ss=5
 " Add line start/end display chars
-set listchars+=precedes:<,extends:>
+set lcs+=precedes:<,extends:>
 
 " Section: Visual mode
 
 " In visual mode press * or # to search only selection
-vnoremap <silent> * :<C-u>call VisualSelection('','')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('','')<CR>/<C-R>=@/<CR><CR>
+" vnoremap <silent> * :<C-u>call VisualSelection('','')<CR>/<C-R>=@/<CR><CR>
+" vnoremap <silent> # :<C-u>call VisualSelection('','')<CR>/<C-R>=@/<CR><CR>
 
 " Section: Moving around tabs, windows and buffers
 
@@ -217,19 +224,19 @@ function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction
 
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
+" function! VisualSelection(direction, extra_filter) range
+"     let l:saved_reg = @"
+"     execute "normal! vgvy"
+"
+"     let l:pattern = escape(@", "\\/.*'$^~[]")
+"     let l:pattern = substitute(l:pattern, "\n$", "", "")
+"
+"     if a:direction == 'gv'
+"         call CmdLine("Ack '" . l:pattern . "' " )
+"     elseif a:direction == 'replace'
+"         call CmdLine("%s" . '/'. l:pattern . '/')
+"     endif
+"
+"     let @/ = l:pattern
+"     let @" = l:saved_reg
+" endfunction
