@@ -19,6 +19,9 @@ let mapleader = ","
 " Save with leader+w
 nmap <leader>w :w<cr>
 
+" Remove history stack slots
+let g:netrw_dirhistmax=0
+
 " Section: UI
 
 " Display absolute line numbers on current line and relative line numbers on other lines
