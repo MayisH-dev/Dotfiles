@@ -1,4 +1,5 @@
 " Section: General
+
 " Use system clipboard
 set clipboard+=unnamedplus
 
@@ -17,7 +18,7 @@ au FocusGained,BufEnter * checktime
 let mapleader = ","
 
 " Save with leader+w
-nmap <leader>w :w<cr>
+nnoremap <leader>w :w<cr>
 
 " Remove history stack slots
 let g:netrw_dirhistmax=0
@@ -25,8 +26,7 @@ let g:netrw_dirhistmax=0
 " Section: UI
 
 " Display absolute line numbers on current line and relative line numbers on other lines
-set nu
-set rnu
+set nu rnu
 
 " Scrollover when moving vertically
 set so=5
@@ -76,8 +76,7 @@ syntax enable
 " Section: Files, backups and undo
 
 " Turn off backups, git tracks already
-set nowb
-set noswf
+set nowb noswf
 
 " Section: Text, tab and indents
 
@@ -88,18 +87,17 @@ set et
 set sta
 
 " Tab = 4 spaces
-set shiftwidth=4
-set ts=4
+set shiftwidth=4 ts=4
 
-" Line break (defaul textwidth=78, no breaks on longer lines)
-set lbr
-set tw=150
+" Line break (no breaks on longer lines)
+set lbr tw=150
 
-set si   " Smart indent (on new lines)
-set wrap " Wrap long lines (only changes display)
+" Smart indent (on new lines) wrap long lines (only changes display)
+set si wrap
 
 " Number of cols to scroll horizontally
 set ss=5
+
 " Add line start/end display chars
 set lcs+=precedes:<,extends:>
 
@@ -112,49 +110,49 @@ set lcs+=precedes:<,extends:>
 " Section: Moving around tabs, windows and buffers
 
 " Space to forward search, Ctrl+Space backwards search
-map <space> /
-map <C-space> ?
+noremap <space> /
+noremap <C-space> ?
 
 " Leader+Enter to disable highlight
-map <silent> <leader><cr> :noh<cr>
+noremap <silent> <leader><cr> :noh<cr>
 
 " Ctrl+[hjkl] to switch windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-j> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-j> <C-W>h
+noremap <C-l> <C-W>l
 
 " Leader+bd to close current buffer
-map <leader>bd :Bclose<cr>:tabc<cr>gT
+noremap <leader>bd :Bclose<cr>:tabc<cr>gT
 
 " Leader+ba to close all buffers
-map <leader>ba :bufdo bd<cr>
+noremap <leader>ba :bufdo bd<cr>
 
 " Leader+[hl] to navigate buffers
-map <leader>l :bn<cr>
-map <leader>h :bp<cr>
+noremap <leader>l :bn<cr>
+noremap <leader>h :bp<cr>
 
 " Leader+tn to create new empty tab
-map <leader>tn :tabe<cr>
+noremap <leader>tn :tabe<cr>
 " Leader+to to close all other tabs
-map <leader>to :tabo<cr>
+noremap <leader>to :tabo<cr>
 " Leader+tc to close tab
-map <leader>tc :tabc<cr>
+noremap <leader>tc :tabc<cr>
 " Leader+tm to move tab
-map <leader>tm :tabm
+noremap <leader>tm :tabm
 " Leaber+t+Leader to navigate tab
-map <leader>t<leader> :tabnext
+noremap <leader>t<leader> :tabnext
 
 " Leader+tl to toggle between last accessed tab
 let g:lasttab = 1
-nmap <leader>tl :exe"tabn ".g:lasttab<cr>
+nnoremap <leader>tl :exe"tabn ".g:lasttab<cr>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Leader+te open new tab with current buffer's path
-map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
+noremap <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
 
 " Leader+cd switch working directory to the directory of current buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Switch to existing tab if same buffer is open, open in new tab otherwise
 set swb=useopen,usetab,newtab
@@ -165,16 +163,16 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Section: Status line
 set statusline=\ %F%m%r%h\ %w\ \ WorkDir:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
-" Section: Editng mappings
+" Section: Editng noremappings
 
 " 0 to first non-blank character
-map 0 ^
+noremap 0 ^
 
 " Alt+[jk] to move lines in normal and visual modes
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <M-j> mz:m+<cr>`z
+nnoremap <M-k> mz:m-2<cr>`z
+vnoremap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Before buffer write, trim white spaces for certain filetypes
 au BufWritePre *.cs,*.sql,*.fish,*.sh,*.vim,*.txt,*.lua,*.py :%s/\s\+$//e
@@ -182,21 +180,21 @@ au BufWritePre *.cs,*.sql,*.fish,*.sh,*.vim,*.txt,*.lua,*.py :%s/\s\+$//e
 " Section: Spell checking
 
 " <leader>ss to toggle spell checking
-map <leader>ss :setlocal spell!<cr>
+noremap <leader>ss :setlocal spell!<cr>
 
 " <leader>sn to navigate to next misspelled word
-" map <leader>sn ]s
+" noremap <leader>sn ]s
 " <leader>sp to navigate to previous misspelled word
-" map <leader>sp [s
+" noremap <leader>sp [s
 " <leader>sa to add word to dictionary
-" map <leader>sa zg
+" noremap <leader>sa zg
 " <leader>s? to suggest alternative for misspelled word
-" map <leader>s? z=
+" noremap <leader>s? z=
 
 " Section: Misc
 
 " <leader>q to open a scribble buffer
-map <leader>q :e ~/buffer<cr>
+noremap <leader>q :e ~/buffer<cr>
 
 " ========================= "
 " Section: Helper functions "
@@ -226,20 +224,3 @@ endfunction
 function! CmdLine(str)
     call feedkeys(":" . a:str)
 endfunction
-
-" function! VisualSelection(direction, extra_filter) range
-"     let l:saved_reg = @"
-"     execute "normal! vgvy"
-"
-"     let l:pattern = escape(@", "\\/.*'$^~[]")
-"     let l:pattern = substitute(l:pattern, "\n$", "", "")
-"
-"     if a:direction == 'gv'
-"         call CmdLine("Ack '" . l:pattern . "' " )
-"     elseif a:direction == 'replace'
-"         call CmdLine("%s" . '/'. l:pattern . '/')
-"     endif
-"
-"     let @/ = l:pattern
-"     let @" = l:saved_reg
-" endfunction
