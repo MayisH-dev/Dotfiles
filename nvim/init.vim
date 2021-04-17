@@ -160,10 +160,16 @@ set swb=useopen,usetab,newtab
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Leader + ev to edit neovim configuration
+:nnoremap <leader>ev :vsplit $MYVIMRC <cr>
+
+" Leader + sv to source neovim configuration
+:nnoremap <leader>sv :source $MYVIMRC <cr>
+
 " Section: Status line
 set statusline=\ %F%m%r%h\ %w\ \ WorkDir:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
-" Section: Editng noremappings
+" Section: Editng mappings
 
 " 0 to first non-blank character
 noremap 0 ^
