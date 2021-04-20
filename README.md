@@ -58,7 +58,7 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/MayisH-Dev/Dotfiles.git
    ```
-2. Crete symbolic links for each line in the links file
+2. Create symbolic links for each line in the links file
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements

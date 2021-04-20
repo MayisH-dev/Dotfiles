@@ -37,8 +37,8 @@ set wmnu
 " Ignore files in wildmode completions
 set wig+=*/.git/*,*/bin/*,*/obj/*
 
-" Show current row/col position
-set ru
+" " Show current row/col position
+" set ru
 
 " Height of command bar
 set ch=1
@@ -158,7 +158,7 @@ noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 set swb=useopen,usetab,newtab
 
 " Return to last edit position when opening files
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au BufRead * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Leader + ev to edit neovim configuration
 :nnoremap <leader>ev :vsplit $MYVIMRC <cr>
@@ -167,7 +167,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 :nnoremap <leader>sv :source $MYVIMRC <cr>
 
 " Section: Status line
-set statusline=\ %F%m%r%h\ %w\ \ WorkDir:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+set stl=\ %F%m%r\ %w\ \|\ WorkDir:\ %{getcwd()}\ \|\ Ln:\ %3l\ \ Col:\ %2c\ \|\ File:\ %Y
 
 " Section: Editng mappings
 
