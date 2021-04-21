@@ -8,3 +8,5 @@ source spell.vim
 source status_line.vim
 source ui.vim
 source visual.vim
+
+source plugin.vim
