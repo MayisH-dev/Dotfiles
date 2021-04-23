@@ -10,7 +10,7 @@ set so=5
 set wmnu
 
 " Ignore files in wildmode completions
-set wig+=*/.git/*,*/bin/*,*/obj/*
+set wig+=*/.git/*,*/obj/*
 
 " Height of command bar
 set ch=1
