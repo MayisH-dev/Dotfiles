@@ -3,43 +3,39 @@
 " 0 to go to the first non-blank character
 noremap 0 ^
 
-" Space to forward search, Ctrl+Space backwards search
-noremap <space> /
-noremap <C-space> ?
-
 " Leader+Enter to disable highlight
 noremap <silent> <leader><cr> :noh<cr>
 
 " Ctrl+[hjkl] to switch windows
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
-noremap <C-j> <C-W>h
+noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 " Leader+bd to close current buffer
-noremap <leader>bd :Bclose<cr>:tabc<cr>gT
+noremap <silent> <leader>bd :Bclose<cr>:tabc<cr>gT
 
 " Leader+ba to close all buffers
-noremap <leader>ba :bufdo bd<cr>
+noremap <silent> <leader>ba :bufdo bd<cr>
 
 " Leader+[hl] to navigate buffers
 noremap <leader>l :bn<cr>
 noremap <leader>h :bp<cr>
 
 " Leader+tn to create new empty tab
-noremap <leader>tn :tabe<cr>
+noremap <silent> <leader>tn :tabe<cr>
 " Leader+to to close all other tabs
-noremap <leader>to :tabo<cr>
+noremap <silent> <leader>to :tabo<cr>
 " Leader+tc to close tab
-noremap <leader>tc :tabc<cr>
+noremap <silent> <leader>tc :tabc<cr>
 " Leader+tm to move tab
-noremap <leader>tm :tabm
+noremap <silent> <leader>tm :tabm
 " Leaber+t+Leader to navigate tab
-noremap <leader>t<leader> :tabnext
+noremap <silent> <leader>t<leader> :tabnext
 
 " Leader+tl to toggle between last accessed tab in normal mode
 let g:lasttab = 1
-nnoremap <leader>tl :exe"tabn ".g:lasttab<cr>
+nnoremap <silent> <leader>tl :exe"tabn ".g:lasttab<cr>
 au TabLeave * let g:lasttab = tabpagenr()
 
 " Leader+te open new tab with current buffer's path
@@ -59,3 +55,6 @@ au BufRead * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\""
 
 " Leader + sv to source neovim configuration
 :nnoremap <leader>sv :source $MYVIMRC <cr>
+
+nnoremap <silent> <A-d> <cmd>lua require('lspsaga.floaterm').open_float_terminal()<CR>
+tnoremap <silent> <A-d> <C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>

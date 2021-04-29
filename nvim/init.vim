@@ -9,7 +9,5 @@ source ~/.config/nvim/status_line.vim
 source ~/.config/nvim/ui.vim
 source ~/.config/nvim/visual.vim
 
-source ~/.config/nvim/plugin.vim
-
-luafile ~/.config/nvim/lang-client.lua
-luafile ~/.config/nvim/keybindings_and_completion.lua
+lua require("language-client")
+lua require("plugins")
