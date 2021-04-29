@@ -12,7 +12,7 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -49,7 +49,7 @@
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  #decorations: full
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -60,10 +60,10 @@
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  #startup_mode: Windowed
+  startup_mode: Windowed
 
   # Window title
-  #title: Alacritty
+  title: Alacritty
 
   # Window class (Linux/BSD only):
   #class:
@@ -93,37 +93,37 @@ font:
     # Font family
     family: Iosevka Term Medium Extended
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Medium Extended
 
   # Bold font face
-  # bold:
+  bold:
     # Font family
-    # family: Iosevka Term
+    family: Iosevka Term Extended
 
     # The `style` can be specified to pick a specific face.
-    # style: Bold
+    style: Bold Extended
 
   # Italic font face
-  # italic:
+  italic:
     # Font family
-    #family: monospace
+    family: Iosevka Term Extended Oblique
 
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Extended Oblique
 
   # Bold italic font face
-  #bold_italic:
+  bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    family: Iosevka Term Extended Oblique
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+    style: Bold Extended Oblique
 
   # Point size
-  size: 15.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -147,141 +147,115 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (Tomorrow Night)
-  schemes: 
-    base16_dark: &b16d
-      primary:
-        background: '#181818'
-        foreground: '#d8d8d8'
-  # Colors the cursor will use if `custom_cursor_colors` is true
-      cursor:
-        text: '#d8d8d8'
-        cursor: '#d8d8d8'
-  # Normal colors
-      normal:
-        black:   '#181818'
-        red:     '#ab4642'
-        green:   '#a1b56c'
-        yellow:  '#f7ca88'
-        blue:    '#7cafc2'
-        magenta: '#ba8baf'
-        cyan:    '#86c1b9'
-        white:   '#d8d8d8'
-  # Bright colors
-      bright:
-        black:   '#585858'
-        red:     '#ab4642'
-        green:   '#a1b56c'
-        yellow:  '#f7ca88'
-        blue:    '#7cafc2'
-        magenta: '#ba8baf'
-        cyan:    '#86c1b9'
-        white:   '#f8f8f8'
-
-  colors: *b16d
+colors:
   # Default colors
-  #primary:
-  #  background: '#1d1f21'
-  #  foreground: '#c5c8c6'
+  primary:
+    background: '#2c2c2c'
+    foreground: '#d6d6d6'
 
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '#828482'
-    #bright_foreground: '#eaeaea'
+    dim_foreground:    '#dbdbdb'
+    bright_foreground: '#d9d9d9'
+    dim_background:    '#202020' # not sure
+    bright_background: '#3a3a3a' # not sure
 
   # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor.
-  #
-  # Allowed values are CellForeground and CellBackground, which reference the
-  # affected cell, or hexadecimal colors like #ff00ff.
-  #cursor:
-  #  text: CellBackground
-  #  cursor: CellForeground
-
-  # Vi mode cursor colors
-  #
-  # Colors for the cursor when the vi mode is active.
-  #
-  # Allowed values are CellForeground and CellBackground, which reference the
-  # affected cell, or hexadecimal colors like #ff00ff.
-  #vi_mode_cursor:
-  #  text: CellBackground
-  #  cursor: CellForeground
-
-  # Selection colors
-  #
-  # Colors which should be used to draw the selection area.
-  #
-  # Allowed values are CellForeground and CellBackground, which reference the
-  # affected cell, or hexadecimal colors like #ff00ff.
-  #selection:
-  #  text: CellBackground
-  #  background: CellForeground
-
-  # Search colors
-  #
-  # Colors used for the search bar and match highlighting.
-  #
-  # Allowed values are CellForeground and CellBackground, which reference the
-  # affected cell, or hexadecimal colors like #ff00ff.
-  #search:
-  #  matches:
-  #    foreground: '#000000'
-  #    background: '#ffffff'
-  #
-  #  bar:
-  #    background: CellForeground
-  #    foreground: CellBackground
+  cursor:
+    text:   '#2c2c2c'
+    cursor: '#d9d9d9'
 
   # Normal colors
-  #normal:
-  #  black:   '#1d1f21'
-  #  red:     '#cc6666'
-  #  green:   '#b5bd68'
-  #  yellow:  '#f0c674'
-  #  blue:    '#81a2be'
-  #  magenta: '#b294bb'
-  #  cyan:    '#8abeb7'
-  #  white:   '#c5c8c6'
+  normal:
+    black:   '#1c1c1c'
+    red:     '#bc5653'
+    green:   '#909d63'
+    yellow:  '#ebc17a'
+    blue:    '#7eaac7'
+    magenta: '#aa6292'
+    cyan:    '#86d3ce'
+    white:   '#cacaca'
 
   # Bright colors
-  #bright:
-  #  black:   '#666666'
-  #  red:     '#d54e53'
-  #  green:   '#b9ca4a'
-  #  yellow:  '#e7c547'
-  #  blue:    '#7aa6da'
-  #  magenta: '#c397d8'
-  #  cyan:    '#70c0b1'
-  #  white:   '#eaeaea'
+  bright:
+    black:   '#636363'
+    red:     '#bc5653'
+    green:   '#909d63'
+    yellow:  '#ebc17a'
+    blue:    '#7eaac7'
+    magenta: '#aa6292'
+    cyan:    '#86d3ce'
+    white:   '#f7f7f7'
 
   # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '#131415'
-  #  red:     '#864343'
-  #  green:   '#777c44'
-  #  yellow:  '#9e824c'
-  #  blue:    '#556a7d'
-  #  magenta: '#75617b'
-  #  cyan:    '#5b7d78'
-  #  white:   '#828482'
+  dim:
+    black:   '#232323'
+    red:     '#74423f'
+    green:   '#5e6547'
+    yellow:  '#8b7653'
+    blue:    '#556b79'
+    magenta: '#6e4962'
+    cyan:    '#5c8482'
+    white:   '#828282'
+  primary:
+    background: '#0A0E14'
+    foreground: '#B3B1AD'
 
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '#ff00ff' }`
-  #
-  #indexed_colors: []
+# === Ayu Dark ===
+# # Normal colors
+# normal:
+#   black: '#01060E'
+#   red: '#EA6C73'
+#   green: '#91B362'
+#   yellow: '#F9AF4F'
+#   blue: '#53BDFA'
+#   magenta: '#FAE994'
+#   cyan: '#90E1C6'
+#   white: '#C7C7C7'
+#
+# # Bright colors
+# bright:
+#   black: '#686868'
+#   red: '#F07178'
+#   green: '#C2D94C'
+#   yellow: '#FFB454'
+#   blue: '#59C2FF'
+#   magenta: '#FFEE99'
+#   cyan: '#95E6CB'
+#   white: '#FFFFFF'
+# # # # # # # # # # # # #
+
+# == COBALT2 ==
+# cursor:
+#   text: '#fefff2'
+#   cursor: '#f0cc09'
+#
+# selection:
+#   text: '#b5b5b5'
+#   background: '#18354f'
+#
+# primary:
+#   background: '#132738'
+#   foreground: '#ffffff'
+#
+# normal:
+#   black:   '#000000'
+#   red:     '#ff0000'
+#   green:   '#38de21'
+#   yellow:  '#ffe50a'
+#   blue:    '#1460d2'
+#   magenta: '#ff005d'
+#   cyan:    '#00bbbb'
+#   white:   '#bbbbbb'
+#
+# bright:
+#   black:   '#555555'
+#   red:     '#f40e17'
+#   green:   '#3bd01d'
+#   yellow:  '#edc809'
+#   blue:    '#5555ff'
+#   magenta: '#ff55ff'
+#   cyan:    '#6ae3fa'
+#   white:   '#ffffff'
+# # # # # # # # # # # # #
 
 # Bell
 #
@@ -693,6 +667,11 @@ font:
   #- { key: F,      mods: Command|Control,    action: ToggleFullscreen }
   #- { key: F,      mods: Command,            action: SearchForward    }
   #- { key: B,      mods: Command,            action: SearchBackward   }
+mouse:
+  hide_when_typing: true
+
+cursor:
+  style: Beam
 
 #debug:
   # Display the time it takes to redraw each frame.
