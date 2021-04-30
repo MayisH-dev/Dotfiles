@@ -7,4 +7,4 @@ vnoremap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Before buffer write, trim white spaces for certain filetypes
-au BufWritePre *.cs,*.sql,*.fish,*.sh,*.vim,*.txt,*.lua,*.py :%s/\s\+$//e
+au BufWritePre *.yml,*.cs,*.sql,*.fish,*.sh,*.vim,*.txt,*.lua,*.py :%s/\s\+$//e
