@@ -9,5 +9,5 @@ source ~/.config/nvim/status_line.vim
 source ~/.config/nvim/ui.vim
 source ~/.config/nvim/visual.vim
 
-lua require("language-client")
+lua require("init-language-servers")
 lua require("plugins")
