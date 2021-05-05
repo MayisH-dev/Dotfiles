@@ -61,7 +61,6 @@ To get a local copy up and running follow these simple steps.
 2. Create symbolic links for each line in the links file
 3. [Install](https://github.com/wbthomason/packer.nvim#quickstart) packer.nvim
 4. Execute :PackerInstall in neovim
-5. 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
