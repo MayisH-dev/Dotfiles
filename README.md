@@ -58,8 +58,10 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/MayisH-Dev/Dotfiles.git
    ```
-2. [Install](https://github.com/junegunn/vim-plug#neovim) vim-plug
-3. Create symbolic links for each line in the links file
+2. Create symbolic links for each line in the links file
+3. [Install](https://github.com/wbthomason/packer.nvim#quickstart) packer.nvim
+4. Execute :PackerInstall in neovim
+5. 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
