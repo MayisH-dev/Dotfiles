@@ -1,2 +1,2 @@
-# Nothing here
-nvim/plugin/*
+nvim/*
+nvim.old/plugin
