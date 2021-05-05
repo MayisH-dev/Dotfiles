@@ -3,6 +3,9 @@
 " Display absolute line numbers on current line and relative line numbers on other lines
 set nu rnu
 
+" Use number column as sign column for errors/warnings/suggestions
+set scl=number
+
 " Scrollover when moving vertically
 set so=5
 

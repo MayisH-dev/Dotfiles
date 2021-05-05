@@ -7,8 +7,7 @@ set clipboard+=unnamedplus
 set history=500
 
 " Enable filetype plugins
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 " Check for external changes
 set ar
