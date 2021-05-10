@@ -92,36 +92,9 @@ font:
   # Normal (roman) font face
   normal:
     # Font family
-    family: Iosevka Term Medium Extended
+    family: Iosevka Nerd Font Mono
     # The `style` can be specified to pick a specific face.
-    style: Medium Extended
-
-  # Bold font face
-  bold:
-    # Font family
-    family: Iosevka Term Extended
-
-    # The `style` can be specified to pick a specific face.
-    style: Bold Extended
-
-  # Italic font face
-  italic:
-    # Font family
-    family: Iosevka Term Extended Oblique
-
-    # The `style` can be specified to pick a specific face.
-    style: Extended Oblique
-
-  # Bold italic font face
-  bold_italic:
-    # Font family
-    #
-    # If the bold italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    family: Iosevka Term Extended Oblique
-
-    # The `style` can be specified to pick a specific face.
-    style: Bold Extended Oblique
+    style: Light
 
   # Point size
   size: 14.0
