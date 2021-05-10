@@ -60,7 +60,7 @@ return require("packer").startup(
 
         -- Explorer
         use {"kyazdani42/nvim-tree.lua", opt = true}
-        use {"mcchrish/nnn.vim", opt = true}
+        use {"mcchrish/nnn.vim"}
 
         -- use {'lukas-reineke/indent-blankline.nvim', opt=true, branch = 'lua'}
         use {"lewis6991/gitsigns.nvim", opt = true}
