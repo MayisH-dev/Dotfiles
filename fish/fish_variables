@@ -1,9 +1,12 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export DOTNET_CLI_TELEMETRY_OPTOUT:true
-SETUVAR --export EDITOR:/bin/vim
-SETUVAR --export PATH:/home/mayis/\x2edotnet/tools\x1e/home/mayis/\x2eghcup/bin\x1e/home/mayis/\x2elocal/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/sbin\x1e/usr/lib/jvm/default/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e/usr/bin
+SETUVAR --export EDITOR:nvim
+SETUVAR --export GPG_TTY:/dev/pts/0
+SETUVAR --export --path PATH:/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/local/sbin\x1e/usr/bin
 SETUVAR XDG_CONFIG_HOME:/home/mayis/\x2econfig
+SETUVAR --export XINITRC:/home/mayis/\x2econfig/X11/xinitrc
+SETUVAR --export XSERVERRC:/home/mayis/\x2econfig/X11/xserverrc
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
