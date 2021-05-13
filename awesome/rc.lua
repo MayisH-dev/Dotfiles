@@ -37,9 +37,6 @@ awful.spawn.with_shell(
        'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
        )
 
--- Launch gnome-polkit
-awful.spawn.with_shell("gnome-keyring-daemon -d")
-awful.spawn.with_shell("udiskie -t &")
 -- Handle runtime errors after startup
 do
     local in_error = false
@@ -247,7 +244,7 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 -- Create session lock shortcut and add it
-lockscreen = function() awful.util.spawn("slock") end
+lockscreen = function() awful.util.spawn("fish -c i3lock") end
 
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -586,6 +583,6 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+-- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
