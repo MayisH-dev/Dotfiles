@@ -68,6 +68,7 @@ To get a local copy up and running follow these simple steps.
 * [AwesomeWM](https://github.com/awesomeWM/awesome)
 * [fish](https://github.com/fish-shell/fish-shell)
 * [Neovim](https://github.com/neovim/neovim)
+* [LunarVim](https://github.com/ChristianChiarulli/LunarVim)
 * [Alacritty](https://github.com/alacritty/alacritty)
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
