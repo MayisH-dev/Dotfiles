@@ -29,6 +29,7 @@ SETUVAR _fish_abbr_gs:git\x20status
 SETUVAR _fish_abbr_ls:exa
 SETUVAR _fish_abbr_nint:nmcli\x20connection\x20up\x20Internet
 SETUVAR _fish_abbr_nloc:nmcli\x20connection\x20up\x20Localnet
+SETUVAR _fish_abbr_nvim:lvim
 SETUVAR _fish_abbr_rb:reboot
 SETUVAR _fish_abbr_remv:sudo\x20pacman\x20\x2dRns
 SETUVAR _fish_abbr_s:sudo
