@@ -30,12 +30,12 @@ if awesome.startup_errors then
 end
 
 -- XDG AutoStart
-awful.spawn.with_shell(
-       'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
-       'xrdb -merge <<< "awesome.started:true";' ..
-       -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
-       'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
-       )
+-- awful.spawn.with_shell(
+--        'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
+--        'xrdb -merge <<< "awesome.started:true";' ..
+--        -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
+--        'dex --environment Awesome --autostart --search-paths "$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' -- https://github.com/jceb/dex
+--        )
 
 -- Handle runtime errors after startup
 do
@@ -55,9 +55,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/mayis/.config/awesome/theme.lua")
+beautiful.init("~/.config/awesome/theme.lua")
 
-beautiful.notification_font = "Noto Sans 12"
 -- beautiful.notification_shape = gears.infobubble(cr,70,70)
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -184,8 +183,8 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    local names = {"1\239\128\138","2\238\188\190","3\238\180\140","4\238\183\166","5\238\171\145","6\238\172\175","7\238\177\149","8\238\187\191","9\238\188\135"}
-    awful.tag(names,s,awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
